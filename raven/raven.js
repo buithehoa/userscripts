@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name        Raven
 // @namespace   http://cloud.feedly.com
+// @include     /^https?://cloud\.feedly\.com/.*$/
 // @description Scroll the left pane to the selected tag or feed.
 // @version     1
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
@@ -29,3 +30,4 @@ function rowYourBoat(summaries) {
     });
   });
 }
+
