@@ -3,7 +3,7 @@
 // @namespace   http://cloud.feedly.com
 // @include     /^https?://cloud\.feedly\.com/.*$/
 // @description Scroll the left pane to the selected tag or feed.
-// @version     1
+// @version     1.0.1
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js
 // @require     https://mutation-summary.googlecode.com/git/src/mutation-summary.js
 // @grant       none
