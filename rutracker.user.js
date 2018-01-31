@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name rutracker.org
-// @version 0.1.1
+// @version 1.0
 // @description Open search results in new tab and automatically trigger the download.
 // @match *://rutracker.org/forum/*
 // @require https://code.jquery.com/jquery-3.3.1.min.js
