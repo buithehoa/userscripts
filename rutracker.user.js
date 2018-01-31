@@ -12,11 +12,13 @@ $(document).ready(function() {
     $('#search-results').get(0).scrollIntoView();
   }
 
+  // Open search result in new tab
   var selector = '#tor-tbl a.tLink';
   if ($(selector).length) {
     $(selector).attr('target', '_blank');
   }
 
+  // Copy magnet link to clipboard
   if ($('#topic_main').length) {
     setClipboardText($('a.magnet-link').attr('href'));
     $('#topic_main').get(0).scrollIntoView();
