@@ -12,6 +12,11 @@ $(document).ready(function() {
     $('#search-results').get(0).scrollIntoView();
   }
 
+  var selector = '#tor-tbl a.tLink';
+  if ($(selector).length) {
+    $(selector).attr('target', '_blank');
+  }
+
   if ($('#topic_main').length) {
     setClipboardText($('a.magnet-link').attr('href'));
     $('#topic_main').get(0).scrollIntoView();
