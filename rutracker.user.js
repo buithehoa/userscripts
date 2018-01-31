@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 $(document).ready(function() {
-
+  // Scroll search results into view
   if ($('#search-results').length) {
     $('#search-results').get(0).scrollIntoView();
   }
