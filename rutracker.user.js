@@ -13,8 +13,22 @@ $(document).ready(function() {
   }
 
   if ($('#topic_main').length) {
-    $('#topic_main').get(0).scrollIntoView();
     setClipboardText($('a.magnet-link').attr('href'));
+    $('#topic_main').get(0).scrollIntoView();
+
+    setTimeout(function() {
+      var magnetIcon = "<img\
+				class='magnet-icon'\
+				style='display: none'\
+				src='//static.t-ru.org/templates/v1/images/icon_magnet_16_1.png'\
+				alt='magnet' />";
+      $('#topic_main .post_body > span:first-child').append(magnetIcon);
+
+      $('.magnet-icon').css('margin-left', '0.5em');
+      $('.magnet-icon').fadeIn({
+        duration: 1500
+      });
+    }, 500);
   }
 });
 
