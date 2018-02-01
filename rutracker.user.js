@@ -7,6 +7,8 @@
 // ==/UserScript==
 
 $(document).ready(function() {
-  document.getElementById("search-results").scrollIntoView();
-  // window.location.href += "#search-results";
+
+  if ($('#search-results').length != 0) {
+    $('#search-results').get(0).scrollIntoView();
+  }
 });
