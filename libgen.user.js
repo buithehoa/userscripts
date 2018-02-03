@@ -12,11 +12,14 @@
 //  Inspired from Jeremy Cartrell's HN Script
 $(document).ready(function() {
   var addBlankTarget = function() {
+    /*
     var selector = 'table.c a[title="Libgen.io"], ';
     selector += 'table.c a[title="Libgen.pw"], ';
     selector += 'table.c a[title="Bookfi.net"], ';
     selector += 'table.c a[title~="Bookzz.org"]';
+    */
 
+    var selector = 'table.c a';
     $(selector).attr('target', '_blank');
   }
 
