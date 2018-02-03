@@ -19,7 +19,7 @@ $(document).ready(function() {
     selector += 'table.c a[title~="Bookzz.org"]';
     */
 
-    var selector = 'table.c a';
+    var selector = 'table.c tr:not(:first-child) a';
     $(selector).attr('target', '_blank');
   }
 
