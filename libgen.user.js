@@ -5,6 +5,7 @@
 // @match *://libgen.io/search.php*
 // @match *://libgen.io/ads.php*
 // @require http://code.jquery.com/jquery-latest.js
+// @namespace https://greasyfork.org/users/5782
 // ==/UserScript==
 
 //  Inspired from Jeremy Cartrell's HN Script
@@ -18,8 +19,13 @@ $(document).ready(function() {
     $(selector).attr('target', '_blank');
   }
 
-  var initDownload = function() {
-    if (window.location.href.includes('libgen.io/ads.php')) {
+  var Downloader = {
+    init: function(href) {
+      if (window.location.href.includes('libgen.io/ads.php')) {
+        Downloader.initLibgenio();
+      }
+    },
+    initLibgenio: function() {
       $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load7.css" />');
       $('body').append('<div class="loading"></div>');
       $('<style>').prop("type", "text/css").html("\
@@ -36,5 +42,5 @@ $(document).ready(function() {
   }
 
   addBlankTarget();
-  initDownload();
+  Downloader.init(window.location.href);
 });
