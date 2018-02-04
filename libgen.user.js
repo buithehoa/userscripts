@@ -21,6 +21,7 @@ $(document).ready(function() {
   }
 
   var Downloader = {
+    TIMEOUT: 500,
     init: function(href) {
       if (href.includes('libgen.io/ads.php')) {
         Downloader.initLibgenio();
@@ -34,7 +35,7 @@ $(document).ready(function() {
       setTimeout(function() {
         var href = $('body > table tr td:nth-child(3) a:first-child').attr('href');
         window.location.replace(href);
-      }, 500);
+      }, Downloader.TIMEOUT);
     },
     initLibgenpw: function() {
       Downloader.showSpinner();
@@ -45,7 +46,7 @@ $(document).ready(function() {
         } else if ($('.book-info__get a').length > 0) {
           window.location.replace($('.book-info__get a').attr('href'));
         }
-      }, 500);
+      }, Downloader.TIMEOUT);
     },
     showSpinner: function() {
       $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load7.css" />');
