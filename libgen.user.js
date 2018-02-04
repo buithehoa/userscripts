@@ -4,6 +4,7 @@
 // @description Open search results in new tabs
 // @match *://libgen.io/search.php*
 // @match *://libgen.io/ads.php*
+// @match *://libgen.pw/item/*
 // @require http://code.jquery.com/jquery-latest.js
 // @namespace https://greasyfork.org/users/5782
 // ==/UserScript==
@@ -21,11 +22,32 @@ $(document).ready(function() {
 
   var Downloader = {
     init: function(href) {
-      if (window.location.href.includes('libgen.io/ads.php')) {
+      if (href.includes('libgen.io/ads.php')) {
         Downloader.initLibgenio();
+      } else if (href.includes('libgen.pw/item')) {
+        Downloader.initLibgenpw();
       }
     },
     initLibgenio: function() {
+      Downloader.showSpinner();
+
+      setTimeout(function() {
+        var href = $('body > table tr td:nth-child(3) a:first-child').attr('href');
+        window.location.replace(href);
+      }, 500);
+    },
+    initLibgenpw: function() {
+      Downloader.showSpinner();
+
+      setTimeout(function() {
+        if ($('.book-info__download a').length > 0) {
+          window.location.href = $('.book-info__download a').attr('href');
+        } else if ($('.book-info__get a').length > 0) {
+          window.location.replace($('.book-info__get a').attr('href'));
+        }
+      }, 500);
+    },
+    showSpinner: function() {
       $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load7.css" />');
       $('body').append('<div class="loading"></div>');
       $('<style>').prop("type", "text/css").html("\
@@ -33,11 +55,6 @@ $(document).ready(function() {
           top: 90%;\
         }\
       ").appendTo('head');
-
-      setTimeout(function() {
-        var href = $('body > table tr td:nth-child(3) a:first-child').attr('href');
-        window.location.replace(href);
-      }, 500);
     }
   }
 
