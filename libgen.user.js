@@ -18,7 +18,7 @@ $(document).ready(function() {
     $(selector).attr('target', '_blank');
   }
 
-	var initDownload = function() {
+  var initDownload = function() {
     if (window.location.href.includes('libgen.io/ads.php')) {
       $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load7.css" />');
       $('body').append('<div class="loading"></div>');
