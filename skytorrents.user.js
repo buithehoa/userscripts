@@ -28,7 +28,7 @@ function setClipboardText(text) {
   var existsTextarea = document.getElementById(id);
 
   if (!existsTextarea) {
-    console.log("Creating textarea");
+    // console.log("Creating textarea");
     var textarea = document.createElement("textarea");
     textarea.id = id;
     // Place in top-left corner of screen regardless of scroll position.
@@ -52,10 +52,11 @@ function setClipboardText(text) {
     // Avoid flash of white box if rendered for any reason.
     textarea.style.background = 'transparent';
     document.querySelector("body").appendChild(textarea);
-    console.log("The textarea now exists :)");
+
+    // console.log("The textarea now exists :)");
     existsTextarea = document.getElementById(id);
   } else {
-    console.log("The textarea already exists :3")
+    // console.log("The textarea already exists :3")
   }
 
   existsTextarea.value = text;
@@ -64,11 +65,11 @@ function setClipboardText(text) {
   try {
     var status = document.execCommand('copy');
     if (!status) {
-      console.error("Cannot copy text");
+      // console.error("Cannot copy text");
     } else {
-      console.log("The text is now on the clipboard");
+      // console.log("The text is now on the clipboard");
     }
   } catch (err) {
-    console.log('Unable to copy.');
+    // console.log('Unable to copy.');
   }
 }
