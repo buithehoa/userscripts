@@ -4,12 +4,12 @@
 // @description Open search results in new tab and automatically trigger the download.
 // @match *://libgen.io/search.php*
 // @match *://libgen.io/ads.php*
+// @match *://libgen.io/_ads/*
 // @match *://libgen.pw/item/*
 // @require http://code.jquery.com/jquery-latest.js
 // @namespace https://greasyfork.org/users/5782
 // ==/UserScript==
 
-//  Inspired from Jeremy Cartrell's HN Script
 $(document).ready(function() {
   var addBlankTarget = function() {
     /*
@@ -26,7 +26,7 @@ $(document).ready(function() {
   var Downloader = {
     TIMEOUT: 500,
     init: function(href) {
-      if (href.includes('libgen.io/ads.php')) {
+      if (href.includes('libgen.io/_ads/')) {
         Downloader.initLibgenio();
       } else if (href.includes('libgen.pw/item')) {
         Downloader.initLibgenpw();
@@ -36,7 +36,7 @@ $(document).ready(function() {
       Downloader.showSpinner();
 
       setTimeout(function() {
-        var href = $('body > table tr td:nth-child(3) a:first-child').attr('href');
+        var href = $('body > table td#info h2 a').attr('href');
         window.location.replace(href);
       }, Downloader.TIMEOUT);
     },
