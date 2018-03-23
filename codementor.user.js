@@ -8,14 +8,15 @@
 
 $(document).ready(function() {
   var selector = 'a.dashboard__open-question-item';
-  if ($(selector).length) {
-    $(selector).click(function(e) {
-      console.log("Gotcha");
-      e.preventDefault();
+  setTimeout(function() {
+    if ($(selector).length) {
+      $(selector).click(function(e) {
+        e.preventDefault();
 
-      var url = $(this).attr('href');
-      console.log(url);
-      window.open(url, '_blank');
-    });
-  }
+        var url = $(this).attr('href');
+        console.log(url);
+        window.open(url, '_blank');
+      });
+    }
+  }, 1000);
 });
