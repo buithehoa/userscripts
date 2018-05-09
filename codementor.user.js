@@ -18,5 +18,5 @@ $(document).ready(function() {
         window.open(url, '_blank');
       });
     }
-  }, 1000);
+  }, 2000);
 });
