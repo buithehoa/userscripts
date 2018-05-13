@@ -3,7 +3,7 @@
 // @version 0.1.1
 // @description Open search results in new tab and automatically trigger the download.
 // @match *://libgen.io/search.php*
-// @match *://libgen.io/ads.php*
+// @match *://*.libgen.io/ads.php*
 // @match *://libgen.pw/item/*
 // @require http://code.jquery.com/jquery-latest.js
 // @namespace https://greasyfork.org/users/5782
