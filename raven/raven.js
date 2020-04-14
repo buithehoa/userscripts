@@ -14,15 +14,14 @@ this.$ = this.jQuery = jQuery.noConflict(true);
 var observer = new MutationSummary({
   callback: rowYourBoat,
   queries: [
-    { element: "div.header", elementAttributes: "class" },
-    { element: "div.feedIndex", elementAttributes: "class" }
+    { element: "div.LeftnavListRow", elementAttributes: "class" }
   ]
 });
 
 function rowYourBoat(summaries) {
   summaries.forEach(function(summary) {
     summary.attributeChanged.class.every(function(element) {
-      if (element.classList.contains("target") && element.classList.contains("selected")) {
+      if (element.classList.contains("LeftnavListRow--selected")) {
         element.scrollIntoView();
         return false;
       }
@@ -30,3 +29,4 @@ function rowYourBoat(summaries) {
     });
   });
 }
+
