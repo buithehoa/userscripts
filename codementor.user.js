@@ -18,4 +18,8 @@ $(document).ready(function() {
       });
     }
   }, 2000);
+  
+  setInterval(function() {
+    $(".request-filter__refresh-btn").click();
+  }, 2 * 60 * 1000);
 });
