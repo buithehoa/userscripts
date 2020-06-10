@@ -7,19 +7,47 @@
 // ==/UserScript==
 
 $(document).ready(function() {
-  var selector = 'a.dashboard__open-question-item';
-  setTimeout(function() {
-    if ($(selector).length) {
-      $(selector).click(function(e) {
-        e.preventDefault();
-
-        var url = $(this).attr('href');
-        window.open(url, '_blank');
-      });
-    }
-  }, 2000);
+  addClickHandler();
   
   setInterval(function() {
     $(".request-filter__refresh-btn").click();
-  }, 2 * 60 * 1000);
+  }, 5 * 60 * 1000);
 });
+
+function addClickHandler() {
+  var selector = 'a.dashboard__open-question-item';
+  
+  waitForEl(selector, function() {
+    $(selector).each(function(index, element) {        
+      if (typeof $(element).data("blessed") === 'undefined') {
+        $(element).data("blessed", "1");
+        $(element).click(function(e) {
+          e.preventDefault();
+
+          var url = $(this).attr('href');
+          window.open(url, '_blank');
+        });
+      }
+    });      
+  });
+}
+
+var waitForEl = function(selector, callback, count) {
+  var MAX_NUMBER_OF_RETRIES = 60;
+  var TIMEOUT = 1000;
+  
+  if (jQuery(selector).length) {
+    callback();
+  } else {
+    setTimeout(function() {
+      if (!count) {
+        count = 0;
+      }
+      count++;
+      if (count <= MAX_NUMBER_OF_RETRIES) {
+        console.log("[Greasemonkey][Crossover] Waiting for elements ...");
+        waitForEl(selector, callback, count);
+      } else {return;}
+    }, TIMEOUT);
+  }
+};
