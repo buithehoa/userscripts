@@ -10,16 +10,26 @@ $(document).ready(function() {
   addClickHandler();
   
   setInterval(function() {
+		console.log("[Greasemonkey][Codementor] Refreshing open item list ...");
+    
     $(".request-filter__refresh-btn").click();
-  }, 5 * 60 * 1000);
+    setTimeout(function() {
+      addClickHandler();
+			console.log("[Greasemonkey][Codementor] Refreshing open item list ... DONE");
+    }, 2000);    
+  }, 2 * 60 * 1000);  
 });
 
 function addClickHandler() {
   var selector = 'a.dashboard__open-question-item';
   
   waitForEl(selector, function() {
-    $(selector).each(function(index, element) {        
+    var newElementCount = 0;
+    
+    $(selector).each(function(index, element) {
       if (typeof $(element).data("blessed") === 'undefined') {
+        newElementCount++;
+        
         $(element).data("blessed", "1");
         $(element).click(function(e) {
           e.preventDefault();
@@ -28,7 +38,9 @@ function addClickHandler() {
           window.open(url, '_blank');
         });
       }
-    });      
+    });
+    
+    console.log("[Greasemonkey][Codementor] New element count: " + newElementCount);
   });
 }
 
