@@ -13,11 +13,19 @@ $(document).ready(function() {
 		console.log("[Greasemonkey][Codementor] Refreshing open item list ...");
     
     $(".request-filter__refresh-btn").click();
+    
     setTimeout(function() {
       addClickHandler();
 			console.log("[Greasemonkey][Codementor] Refreshing open item list ... DONE");
-    }, 2000);    
-  }, 2 * 60 * 1000);  
+    }, 2000);
+    
+    var closeButtonSelector = ".instant-help__request .close";
+    if ($(closeButtonSelector).length) {
+      console.log("[Greasemonkey][Codementor] Closing new request notification ...");
+      $(closeButtonSelector).click();
+    }
+    
+  }, 2 * 60 * 1000);
 });
 
 function addClickHandler() {
@@ -57,7 +65,7 @@ var waitForEl = function(selector, callback, count) {
       }
       count++;
       if (count <= MAX_NUMBER_OF_RETRIES) {
-        console.log("[Greasemonkey][Crossover] Waiting for elements ...");
+        console.log("[Greasemonkey][Codementor] Waiting for new elements ...");
         waitForEl(selector, callback, count);
       } else {return;}
     }, TIMEOUT);
