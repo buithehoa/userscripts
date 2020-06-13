@@ -25,7 +25,7 @@ $(document).ready(function() {
       $(closeButtonSelector).click();
     }
     
-  }, 2 * 60 * 1000);
+  }, 5 * 60 * 1000);
 });
 
 function addClickHandler() {
