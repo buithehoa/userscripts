@@ -3,7 +3,6 @@
 // @version 1.0
 // @description Sort albums in descending order by play count.
 //
-// @match *://rutracker.org/forum/*
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
@@ -35,6 +34,9 @@ $(document).ready(function() {
     $('.chartlist .chartlist-row').sort(function(a, b) {
       return 1;
     }).appendTo('.chartlist');
+
+    if ($('#top-albums-section').length) {
+      $('#top-albums-section').get(0).scrollIntoView();
+    }
   });
 });
-
