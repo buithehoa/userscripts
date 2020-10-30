@@ -24,7 +24,6 @@ $(document).ready(function() {
   // Trigger download
   var downloadButtonSelector = 'a.dlButton.addDownloadedBook';
   if ($(downloadButtonSelector).length) {
-    console.log('hello');
     $(downloadButtonSelector)[0].click();
   }
 });
