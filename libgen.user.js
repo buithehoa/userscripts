@@ -3,8 +3,13 @@
 // @version 0.1.1
 // @description Open search results in new tab and automatically trigger the download.
 // @match *://libgen.io/search.php*
+// @match *://libgen.lc/search.php*
+// @match *://gen.lib.rus.ec/search.php*
+
 // @match *://*.libgen.io/ads.php*
+// @match *://libgen.me/item/*
 // @match *://libgen.pw/item/*
+// @match *://booksdescr.org/ads.php*
 // @require http://code.jquery.com/jquery-latest.js
 // @namespace https://greasyfork.org/users/5782
 // ==/UserScript==
@@ -26,23 +31,31 @@ $(document).ready(function() {
   var Downloader = {
     TIMEOUT: 500,
     init: function(href) {
+      if (! href.includes('search.php')) {
+        Downloader.showSpinner();
+      }
+
       if (href.includes('libgen.io/ads.php')) {
         Downloader.initLibgenio();
-      } else if (href.includes('libgen.pw/item')) {
+      } else if (href.includes('libgen.pw/item') || href.includes('libgen.me/item')) {
         Downloader.initLibgenpw();
+      } else if (href.includes('booksdescr.org/ads.php')) {
+        Downloader.initBooksDescr();
       }
     },
+    initBooksDescr: function() {
+      setTimeout(function() {
+        var href = $('body > table#main tbody tr td:nth-child(2) a:first-child').attr('href');
+        window.location.replace(href);
+      }, Downloader.TIMEOUT);
+    },
     initLibgenio: function() {
-      Downloader.showSpinner();
-
       setTimeout(function() {
         var href = $('body > table tr td:nth-child(3) a:first-child').attr('href');
         window.location.replace(href);
       }, Downloader.TIMEOUT);
     },
     initLibgenpw: function() {
-      Downloader.showSpinner();
-
       setTimeout(function() {
         if ($('.book-info__download a').length > 0) {
           window.location.href = $('.book-info__download a').attr('href');
