@@ -34,5 +34,9 @@ $(document).ready(function() {
     $('.chartlist .chartlist-row').sort(function(a, b) {
       return 1;
     }).appendTo('.chartlist');
+
+    if ($('#top-albums-section').length) {
+      $('#top-albums-section').get(0).scrollIntoView();
+    }
   });
 });
