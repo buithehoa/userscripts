@@ -35,6 +35,8 @@ $(document).ready(function() {
       return 1;
     }).appendTo('.chartlist');
 
+    $('.col-main').prepend($('nav.pagination'));
+
     if ($('#top-albums-section').length) {
       $('#top-albums-section').get(0).scrollIntoView();
     }
