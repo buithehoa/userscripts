@@ -83,12 +83,11 @@ function setClipboardText(text) {
   try {
     var status = document.execCommand('copy');
     if (!status) {
-      console.error("Cannot copy text");
+      console.error("[ERROR] Cannot copy text");
     } else {
-      console.log("The text is now on the clipboard", text);
+      console.log("[DEBUG] The text is now on the clipboard", text);
     }
   } catch (err) {
-    console.log('Unable to copy.');
+    console.log('[ERROR] Unable to copy.');
   }
 }
-
