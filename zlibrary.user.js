@@ -21,9 +21,15 @@ $(document).ready(function() {
     $(titleSelector).attr('target', '_blank');
   }
 
+  var coverSelector = '.checkBookDownloaded.itemCoverWrapper a';
+  if ($(coverSelector).length) {
+    $(coverSelector).attr('target', '_blank');
+  }
+
   // Trigger download
   var downloadButtonSelector = 'a.dlButton.addDownloadedBook';
   if ($(downloadButtonSelector).length) {
+    console.log('hello');
     $(downloadButtonSelector)[0].click();
   }
 });
