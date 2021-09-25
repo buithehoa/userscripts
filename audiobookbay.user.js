@@ -3,12 +3,22 @@
 // @version     1.0
 // @description Automatically copy magnet links to clipboard.
 //
+// @match *://audiobookbay.nl/
+// @match *://audiobookbay.nl/page/*
 // @match *://audiobookbay.nl/audio-books/*
 //
 // @require https://code.jquery.com/jquery-3.6.0.min.js
 // ==/UserScript==
 
 $(document).ready(function() {
+  var addBlankTarget = function() {
+    var selector = '.post .postTitle a';
+    if ($(selector).length) {
+      $(selector).attr('target', '_blank');
+    }
+  }
+  addBlankTarget();
+
   var textarea = $('textarea#comment');
   textarea.get(0).scrollIntoView({ behavior: 'smooth', block: 'end' });
 
