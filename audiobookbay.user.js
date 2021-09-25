@@ -9,23 +9,27 @@
 // ==/UserScript==
 
 $(document).ready(function() {
-  var magnetLink = $('#magnetLink').get(0);
+  var textarea = $('textarea#comment');
+  textarea.get(0).scrollIntoView({ behavior: 'smooth', block: 'end' });
 
-  magnetLink.scrollIntoView({ behavior: 'smooth' });
+  var magnetLink = $('#magnetLink').get(0);
 	magnetLink.click();
 
   setTimeout(function() {
-    var magnetIcon = $('#magnetIcon').get(0);
-    if (magnetIcon) {
-    	console.log('[DEBUG]', magnetIcon.href);
-
-      var textarea = $('textarea#comment');
-      textarea.val(magnetIcon.href);
+    var copyToClipboard = function(text) {
+      textarea.val(text);
      	textarea.select();
       document.execCommand("copy");
       textarea.val('');
     }
 
-  }, 2000);
+    var magnetIcon = $('#magnetIcon').get(0);
+    if (magnetIcon) {
+    	console.log('[DEBUG]', magnetIcon.href);
 
+      copyToClipboard(magnetIcon.href);
+      magnetIcon.focus();
+    }
+
+  }, 2000);
 });
