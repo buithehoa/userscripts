@@ -11,6 +11,13 @@
 // ==/UserScript==
 
 $(document).ready(function() {
+  var copyToClipboard = function(text) {
+    textarea.val(text);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.val('');
+  }
+
   var addBlankTarget = function() {
     var selector = '.post .postTitle a';
     if ($(selector).length) {
@@ -25,21 +32,16 @@ $(document).ready(function() {
   var magnetLink = $('#magnetLink').get(0);
 	magnetLink.click();
 
-  setTimeout(function() {
-    var copyToClipboard = function(text) {
-      textarea.val(text);
-     	textarea.select();
-      document.execCommand("copy");
-      textarea.val('');
-    }
+  var magnetIcon;
+  var waitForMagnetLink = setInterval(function() {
+  	magnetIcon = $('#magnetIcon').get(0);
 
-    var magnetIcon = $('#magnetIcon').get(0);
-    if (magnetIcon) {
-    	console.log('[DEBUG]', magnetIcon.href);
+    if (magnetIcon.href != '') {
+      console.log('[DEBUG]', magnetIcon.href);
 
       copyToClipboard(magnetIcon.href);
       magnetIcon.focus();
+      clearInterval(waitForMagnetLink);
     }
-
-  }, 2000);
+  }, 500);
 });
