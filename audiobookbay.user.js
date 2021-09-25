@@ -12,6 +12,7 @@
 
 $(document).ready(function() {
   var copyToClipboard = function(text) {
+    var textarea = $('textarea#comment');
     textarea.val(text);
     textarea.select();
     document.execCommand("copy");
@@ -26,10 +27,8 @@ $(document).ready(function() {
   }
   addBlankTarget();
 
-  var textarea = $('textarea#comment');
-  textarea.get(0).scrollIntoView({ behavior: 'smooth', block: 'end' });
-
   var magnetLink = $('#magnetLink').get(0);
+  magnetLink.scrollIntoView({ block: 'center' });
 	magnetLink.click();
 
   var magnetIcon;
