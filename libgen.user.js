@@ -11,6 +11,7 @@
 // @match *://libgen.pw/item/*
 // @match *://*.libgen.io/ads.php*
 // @match *://booksdescr.org/ads.php*
+// @match *://library.lol/main/*
 //
 // @require http://code.jquery.com/jquery-latest.js
 // @namespace https://greasyfork.org/users/5782
@@ -19,13 +20,6 @@
 //  Inspired from Jeremy Cartrell's HN Script
 $(document).ready(function() {
   var addBlankTarget = function() {
-    /*
-    var selector = 'table.c a[title="Libgen.io"], ';
-    selector += 'table.c a[title="Libgen.pw"], ';
-    selector += 'table.c a[title="Bookfi.net"], ';
-    selector += 'table.c a[title~="Bookzz.org"]';
-    */
-
     var selector = 'table.c tr:not(:first-child) a';
     $(selector).attr('target', '_blank');
   }
@@ -33,8 +27,8 @@ $(document).ready(function() {
   var Downloader = {
     TIMEOUT: 500,
     init: function(href) {
-      if (!href.includes('search.php')) {
-        Downloader.showSpinner();
+      if (! href.includes('search.php')) {
+      	Downloader.showSpinner();
       }
 
       if (href.includes('libgen.io/ads.php')) {
@@ -43,7 +37,14 @@ $(document).ready(function() {
         Downloader.initLibgenpw();
       } else if (href.includes('booksdescr.org/ads.php')) {
         Downloader.initBooksDescr();
+      } else if (href.includes('library.lol/main/')) {
+        Downloader.initDownload($('#info #download a'));
       }
+    },
+    initDownload: function(downloadLink) {
+      setTimeout(function() {
+        window.location.replace(downloadLink.attr('href'));
+      }, Downloader.TIMEOUT);
     },
     initBooksDescr: function() {
       setTimeout(function() {
@@ -67,11 +68,16 @@ $(document).ready(function() {
       }, Downloader.TIMEOUT);
     },
     showSpinner: function() {
-      $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load7.css" />');
+      $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load4.css" />');
       $('body').append('<div class="loading"></div>');
       $('<style>').prop("type", "text/css").html("\
         .loading:before {\
-          top: 90%;\
+					position: absolute;\
+					margin: auto;\
+          top: 10%;\
+					left: 0;\
+					right: 0;\
+					font-size: 0.75em;\
         }\
       ").appendTo('head');
     }
@@ -79,7 +85,5 @@ $(document).ready(function() {
 
   addBlankTarget();
   Downloader.init(window.location.href);
-  $('#paginator_example_top').get(0).scrollIntoView({
-    behavior: 'smooth'
-  });
+  $('#paginator_example_top').get(0).scrollIntoView({ behavior: 'smooth' });
 });
