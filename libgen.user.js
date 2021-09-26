@@ -4,12 +4,14 @@
 // @description Open search results in new tab and automatically trigger the download.
 // @match *://libgen.io/search.php*
 // @match *://libgen.lc/search.php*
+// @match *://libgen.rs/search.php*
 // @match *://gen.lib.rus.ec/search.php*
 
-// @match *://*.libgen.io/ads.php*
 // @match *://libgen.me/item/*
 // @match *://libgen.pw/item/*
+// @match *://*.libgen.io/ads.php*
 // @match *://booksdescr.org/ads.php*
+//
 // @require http://code.jquery.com/jquery-latest.js
 // @namespace https://greasyfork.org/users/5782
 // ==/UserScript==
@@ -31,7 +33,7 @@ $(document).ready(function() {
   var Downloader = {
     TIMEOUT: 500,
     init: function(href) {
-      if (! href.includes('search.php')) {
+      if (!href.includes('search.php')) {
         Downloader.showSpinner();
       }
 
@@ -77,4 +79,7 @@ $(document).ready(function() {
 
   addBlankTarget();
   Downloader.init(window.location.href);
+  $('#paginator_example_top').get(0).scrollIntoView({
+    behavior: 'smooth'
+  });
 });
