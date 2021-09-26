@@ -85,5 +85,5 @@ $(document).ready(function() {
 
   addBlankTarget();
   Downloader.init(window.location.href);
-  $('#paginator_example_top').get(0).scrollIntoView({ behavior: 'smooth' });
+  $('table.c').get(0).scrollIntoView({ behavior: 'smooth' });
 });
