@@ -68,13 +68,13 @@ $(document).ready(function() {
       }, Downloader.TIMEOUT);
     },
     showSpinner: function() {
-      $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load4.css" />');
+      $('head').append('<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load5.css" />');
       $('body').append('<div class="loading"></div>');
       $('<style>').prop("type", "text/css").html("\
         .loading:before {\
 					position: absolute;\
 					margin: auto;\
-          top: 10%;\
+          top: 40%;\
 					left: 0;\
 					right: 0;\
 					font-size: 0.75em;\
