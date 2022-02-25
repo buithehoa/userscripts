@@ -6,6 +6,9 @@
 // @match *://audiobookbay.nl/
 // @match *://audiobookbay.nl/page/*
 // @match *://audiobookbay.nl/audio-books/*
+// @match *://audiobookbay.fi/
+// @match *://audiobookbay.fi/page/*
+// @match *://audiobookbay.fi/audio-books/*
 //
 // @require https://code.jquery.com/jquery-3.6.0.min.js
 // ==/UserScript==
