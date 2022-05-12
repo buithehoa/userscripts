@@ -3,8 +3,12 @@
 // @version 1.0
 // @description Open search results in new tab and automatically trigger the download.
 //
+// @match *://asia1lib.vip/s/*
+// @match *://asia1lib.vip/book/*
 // @match *://b-ok.asia/s/*
 // @match *://b-ok.asia/book/*
+// @match *://book4you.org/s/*
+// @match *://book4you.org/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
 // ==/UserScript==
