@@ -9,6 +9,8 @@
 // @match *://b-ok.asia/book/*
 // @match *://book4you.org/s/*
 // @match *://book4you.org/book/*
+// @match *://vn1lib.org/s/*
+// @match *://vn1lib.org/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
 // ==/UserScript==
