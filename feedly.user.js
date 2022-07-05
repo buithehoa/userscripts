@@ -22,11 +22,10 @@ function rowYourBoat(summaries) {
   summaries.forEach(function(summary) {
     summary.attributeChanged.class.every(function(element) {
       if (element.classList.contains("LeftnavListRow--selected")) {
-        element.scrollIntoView();
+        element.scrollIntoView({behavior: "smooth", block: "center"});
         return false;
       }
       return true;
     });
   });
 }
-
