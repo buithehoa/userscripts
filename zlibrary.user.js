@@ -11,6 +11,8 @@
 // @match *://book4you.org/book/*
 // @match *://vn1lib.org/s/*
 // @match *://vn1lib.org/book/*
+// @match *://lib-mlsczgagi64n4r56aooajpvn.mountain.pm/s/*
+// @match *://lib-mlsczgagi64n4r56aooajpvn.mountain.pm/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
 // ==/UserScript==
