@@ -1,14 +1,23 @@
 // ==UserScript==
 // @name     		AudioBook Bay
-// @version     1.0
+// @version     1.1
 // @description Automatically copy magnet links to clipboard.
 //
-// @match *://audiobookbay.nl/
-// @match *://audiobookbay.nl/page/*
-// @match *://audiobookbay.nl/audio-books/*
-// @match *://audiobookbay.fi/
+// @match *://audiobookbay.fi/*
 // @match *://audiobookbay.fi/page/*
-// @match *://audiobookbay.fi/audio-books/*
+// @match *://audiobookbay.fi/abs/*
+// @match *://audiobookbay.is/*
+// @match *://audiobookbay.is/page/*
+// @match *://audiobookbay.is/abs/*
+// @match *://audiobookbay.net/*
+// @match *://audiobookbay.net/page/*
+// @match *://audiobookbay.net/abs/*
+// @match *://audiobookbay.nl/*
+// @match *://audiobookbay.nl/page/*
+// @match *://audiobookbay.nl/abs/*
+// @match *://audiobookbay.se/*
+// @match *://audiobookbay.se/page/*
+// @match *://audiobookbay.se/abs/*
 //
 // @require https://code.jquery.com/jquery-3.6.0.min.js
 // ==/UserScript==
