@@ -3,13 +3,14 @@
 // @version 0.1.1
 // @description Open search results in new tab and automatically trigger the download.
 // @match *://libgen.io/search.php*
-// @match *://libgen.lc/search.php*
+// @match *://libgen.lc/index.php*
 // @match *://libgen.rs/search.php*
 // @match *://gen.lib.rus.ec/search.php*
 
 // @match *://libgen.me/item/*
 // @match *://libgen.pw/item/*
 // @match *://*.libgen.io/ads.php*
+// @match *://libgen.li/ads.php*
 // @match *://booksdescr.org/ads.php*
 // @match *://library.lol/main/*
 //
@@ -35,7 +36,7 @@ $(document).ready(function() {
         Downloader.initLibgenio();
       } else if (href.includes('libgen.pw/item') || href.includes('libgen.me/item')) {
         Downloader.initLibgenpw();
-      } else if (href.includes('booksdescr.org/ads.php')) {
+      } else if (href.includes('booksdescr.org/ads.php') || href.includes('libgen.li/ads.php')) {
         Downloader.initBooksDescr();
       } else if (href.includes('library.lol/main/')) {
         Downloader.initDownload($('#info #download a'));
