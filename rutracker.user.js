@@ -25,7 +25,7 @@ $(document).ready(function() {
 
     setTimeout(function() {
       var magnetIcon = "<img\
-				src='//static.t-ru.org/templates/v1/images/magnet_1.svg'\
+				src='https://static.rutracker.cc/templates/v1/images/magnet_1.svg'\
 				style='width: 1em; margin-left: 0.5em;'\
 				alt='magnet' />";
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
       $('.magnet-icon').css('margin-left', '0.5em');
       $('.magnet-icon').fadeIn({
-        duration: 1500
+        duration: 2000
       });
     }, 500);
   }
