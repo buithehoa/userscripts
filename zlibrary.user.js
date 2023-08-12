@@ -11,8 +11,10 @@
 // @match *://book4you.org/book/*
 // @match *://vn1lib.org/s/*
 // @match *://vn1lib.org/book/*
-// @match *://lib-mlsczgagi64n4r56aooajpvn.mountain.pm/s/*
-// @match *://lib-mlsczgagi64n4r56aooajpvn.mountain.pm/book/*
+// @match *://lib-36emhbccn7yu3iqvjqsmawx2.must.wf/s/*
+// @match *://lib-36emhbccn7yu3iqvjqsmawx2.must.wf/book/*
+// @match *://1lib.sk/s/*
+// @match *://1lib.sk/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
 // ==/UserScript==
