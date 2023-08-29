@@ -15,6 +15,8 @@
 // @match *://lib-36emhbccn7yu3iqvjqsmawx2.must.wf/book/*
 // @match *://1lib.sk/s/*
 // @match *://1lib.sk/book/*
+// @match *://en.zlibrary-vn.se/s/*
+// @match *://en.zlibrary-vn.se/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
 // ==/UserScript==
