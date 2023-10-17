@@ -31,14 +31,23 @@ var waitForEl = function(selector, callback, count) {
 
 $(document).ready(function() {
   waitForEl('.chartlist .chartlist-row', function() {
+    /*
     $('.chartlist .chartlist-row').sort(function(a, b) {
       return 1;
     }).appendTo('.chartlist');
 
     $('.col-main').prepend($('nav.pagination'));
-
-    if ($('#top-albums-section').length) {
-      $('#top-albums-section').get(0).scrollIntoView();
+		*/
+    
+    $('.chartlist .chartlist-row').each(function(index, element) {
+      var rank = parseInt($(element).children('.chartlist-index').text());
+      if (rank < 16 || rank > 20) {
+        $(element).hide();
+      }
+    });
+    
+    if ($('.container.content-top-lower').length) {
+      $('.container.content-top-lower').get(0).scrollIntoView();
     }
   });
 });
