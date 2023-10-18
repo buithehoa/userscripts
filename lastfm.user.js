@@ -32,6 +32,8 @@ var waitForEl = function(selector, callback, count) {
 };
 
 $(document).ready(function() {
+  var href = window.location.href;
+  
   waitForEl('.chartlist .chartlist-row', function() {
     /*
     $('.chartlist .chartlist-row').sort(function(a, b) {
@@ -45,16 +47,18 @@ $(document).ready(function() {
       var rankText = $(element).children('.chartlist-index').text();
       var rank = parseInt(rankText.replace(/,/g, ''));
       
-      var startRank = 21;
-      var endRank = 28;
+      var startRank = 1;
+      var endRank = 50;
       
-      var title = $('.library-top .metadata-title').text().trim();
-      if (title == 'Artists Scrobbled') {
-      	startRank = 31;
-        endRank = 38;
-      } else if (title == 'Albums Scrobbled') {
+      if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
+        startRank = 21;
+        endRank = 28;
+      } else if (href.includes("/library/albums?date_preset=ALL")) {
       	startRank = 1251;
         endRank = 1258;
+      } else if (href.includes("/library/artists?date_preset=ALL")) {
+      	startRank = 31;
+        endRank = 38;
       }
       
       if (rank < startRank || rank > endRank) {
