@@ -4,6 +4,7 @@
 // @description Sort albums in descending order by play count.
 //
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS*
+// @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&page=2*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
 // ==/UserScript==
@@ -41,7 +42,16 @@ $(document).ready(function() {
     
     $('.chartlist .chartlist-row').each(function(index, element) {
       var rank = parseInt($(element).children('.chartlist-index').text());
-      if (rank < 16 || rank > 20) {
+      
+      var startRank = 21;
+      var endRank = 28;
+      
+      if ($('.library-top .metadata-title').text().trim() == 'Artists Scrobbled') {
+      	startRank = 51;
+        endRank = 58;
+      }
+      
+      if (rank < startRank || rank > endRank) {
         $(element).hide();
       }
     });
