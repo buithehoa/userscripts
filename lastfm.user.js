@@ -4,6 +4,7 @@
 // @description Sort albums in descending order by play count.
 //
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS*
+// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&page=26&item=1251*
 // @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&item=31*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
@@ -41,14 +42,19 @@ $(document).ready(function() {
 		*/
     
     $('.chartlist .chartlist-row').each(function(index, element) {
-      var rank = parseInt($(element).children('.chartlist-index').text());
+      var rankText = $(element).children('.chartlist-index').text();
+      var rank = parseInt(rankText.replace(/,/g, ''));
       
       var startRank = 21;
       var endRank = 28;
       
-      if ($('.library-top .metadata-title').text().trim() == 'Artists Scrobbled') {
+      var title = $('.library-top .metadata-title').text().trim();
+      if (title == 'Artists Scrobbled') {
       	startRank = 31;
         endRank = 38;
+      } else if (title == 'Albums Scrobbled') {
+      	startRank = 1251;
+        endRank = 1258;
       }
       
       if (rank < startRank || rank > endRank) {
