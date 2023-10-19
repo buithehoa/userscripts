@@ -4,7 +4,7 @@
 // @description Sort albums in descending order by play count.
 //
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS*
-// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&page=26&item=1251*
+// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&item=1501*
 // @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&item=31*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
@@ -54,8 +54,8 @@ $(document).ready(function() {
         startRank = 21;
         endRank = 28;
       } else if (href.includes("/library/albums?date_preset=ALL")) {
-      	startRank = 1251;
-        endRank = 1258;
+      	startRank = 1501;
+        endRank = 1508;
       } else if (href.includes("/library/artists?date_preset=ALL")) {
       	startRank = 31;
         endRank = 38;
