@@ -5,12 +5,20 @@
 //
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS&page=1*
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&item=1501*
-// @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&item=31*
+// @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&page=2*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
 // ==/UserScript==
 
 this.$ = this.jQuery = jQuery.noConflict(true);
+
+const ARTISTS = [
+  "Foo Fighters",
+  "Gipsy Kings",
+  "Prince",
+  "The Smashing Pumpkins",
+  "YUI"
+];
 
 const ALBUMS = [
   "72 Seasons",
@@ -70,8 +78,8 @@ var hideByRank = function(element, rank, startRank, endRank) {
   }
 }
 
-var hideByName = function(element, chartListName) {
-	if (! ALBUMS.includes(chartListName)) {
+var hideByName = function(element, chartListName, names) {
+	if (! names.includes(chartListName)) {
     $(element).hide();
   }
 }
@@ -100,11 +108,11 @@ $(document).ready(function() {
       var endRank = 50;
       
       if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
-        hideByName(element, chartListName);
+        hideByName(element, chartListName, ALBUMS);
       } else if (href.includes("/library/albums?date_preset=ALL")) {
         hideByRank(element, rank, 1501, 1508);
       } else if (href.includes("/library/artists?date_preset=ALL")) {
-        hideByRank(element, rank, 31, 38);
+        hideByName(element, chartListName, ARTISTS);
       }
     });
     
