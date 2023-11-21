@@ -3,7 +3,7 @@
 // @version 1.0
 // @description Sort albums in descending order by play count.
 //
-// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS*
+// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS&page=1*
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&item=1501*
 // @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&item=31*
 //
@@ -11,6 +11,37 @@
 // ==/UserScript==
 
 this.$ = this.jQuery = jQuery.noConflict(true);
+
+const ALBUMS = [
+  "72 Seasons",
+  "Alive at Twenty-Five - Ritual De Lo Habitual Live",
+  "Bad Reputation",
+  "Bigger Houses",
+  "Black and White Rainbows (Deluxe Edition)",
+  "Brigade",
+  "Cheap Queen (Deluxe)",
+  "Chúng Ta Đều Muốn Một Thứ",
+  "CITIZENS",
+  "Curtain Call (Live 1995)",
+  "Hozier (Special Edition)",
+  "I Disagree",
+  "Licked Live In NYC",
+  "Live from the Artists Den",
+  "Meds",
+  "Miss Anthropocene (Rave Edition)",
+  "On Earth As It Is: The B-Side/Rarities Collection",
+  "Only the Strong Survive",
+  "Positions",
+  "Seventeen",
+  "SOS",
+  "The Ballad of Darren (Deluxe)",
+  "the storm before the calm",
+  "The Voyage",
+  "Toys in the Attic",
+  "Train of Thought",
+  "TRUSTFALL",
+  "Tulip Drive",
+];
 
 var waitForEl = function(selector, callback, count) {
   var MAX_NUMBER_OF_RETRIES = 60;
@@ -31,40 +62,53 @@ var waitForEl = function(selector, callback, count) {
   }
 };
 
+var hideByRank = function(element, rank, startRank, endRank) {
+  if (rank < startRank || rank > endRank) {
+    $(element).hide();
+  }
+}
+
+var hideByName = function(element, chartListName) {
+	if (! ALBUMS.includes(chartListName)) {
+    $(element).hide();
+  }
+}
+
+var sortBackward = function() {
+  $('.chartlist .chartlist-row').sort(function(a, b) {
+    return 1;
+  }).appendTo('.chartlist');
+}
+
 $(document).ready(function() {
   var href = window.location.href;
   
   waitForEl('.chartlist .chartlist-row', function() {
-    /*
-    $('.chartlist .chartlist-row').sort(function(a, b) {
-      return 1;
-    }).appendTo('.chartlist');
 
-    $('.col-main').prepend($('nav.pagination'));
-		*/
+//     $('.col-main').prepend($('nav.pagination'));
     
     $('.chartlist .chartlist-row').each(function(index, element) {
       var rankText = $(element).children('.chartlist-index').text();
       var rank = parseInt(rankText.replace(/,/g, ''));
       
+      var chartListName = $(element).find(".chartlist-name a").text();
+      console.log(chartListName);
+      
       var startRank = 1;
       var endRank = 50;
       
       if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
-        startRank = 21;
-        endRank = 28;
+        hideByName(element, chartListName);
       } else if (href.includes("/library/albums?date_preset=ALL")) {
-      	startRank = 1501;
-        endRank = 1508;
+        hideByRank(element, rank, 1501, 1508);
       } else if (href.includes("/library/artists?date_preset=ALL")) {
-      	startRank = 31;
-        endRank = 38;
-      }
-      
-      if (rank < startRank || rank > endRank) {
-        $(element).hide();
+        hideByRank(element, rank, 31, 38);
       }
     });
+    
+    if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
+    	sortBackward();
+    }
     
     if ($('.container.content-top-lower').length) {
       $('.container.content-top-lower').get(0).scrollIntoView();
