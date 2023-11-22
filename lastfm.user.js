@@ -47,6 +47,7 @@ const ALBUMS = [
   "The Ballad of Darren (Deluxe)",
   "the storm before the calm",
   "The Voyage",
+  "The Traveling Wilburys, Vol. 1",
   "Toys in the Attic",
   "Train of Thought",
   "TRUSTFALL",
