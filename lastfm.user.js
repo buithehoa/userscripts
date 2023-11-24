@@ -6,6 +6,7 @@
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS&page=1*
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&item=1501*
 // @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&page=2*
+// @match *://www.last.fm/user/buithehoa/library/music/*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
 // ==/UserScript==
@@ -86,7 +87,7 @@ var hideByName = function(element, chartListName, names) {
 }
 
 var sortBackward = function() {
-  $('.chartlist .chartlist-row').sort(function(a, b) {
+  $('.chartlist .chartlist-row').not('.chartlist__placeholder-row').sort(function(a, b) {
     return 1;
   }).appendTo('.chartlist');
 }
@@ -103,10 +104,6 @@ $(document).ready(function() {
       var rank = parseInt(rankText.replace(/,/g, ''));
       
       var chartListName = $(element).find(".chartlist-name a").text();
-      console.log(chartListName);
-      
-      var startRank = 1;
-      var endRank = 50;
       
       if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
         hideByName(element, chartListName, ALBUMS);
@@ -117,7 +114,7 @@ $(document).ready(function() {
       }
     });
     
-    if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
+    if (href.includes("/library/albums?date_preset=LAST_30_DAYS") || href.includes("/library/music/")) {
     	sortBackward();
     }
     
