@@ -47,6 +47,7 @@ const ALBUMS = [
   "Seventeen",
   "SOS",
   "The Ballad of Darren (Deluxe)",
+  "The Harder They Come (Original Motion Picture Soundtrack)",
   "The Voyage",
   "The Traveling Wilburys, Vol. 1",
   "Toys in the Attic",
