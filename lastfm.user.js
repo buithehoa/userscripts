@@ -127,7 +127,7 @@ $(document).ready(function() {
     } else if (href.includes("/library/music/")) {
       
       var averageScrobblesPerTrack = (scrobbleCount / chartListRows.length).toFixed(2);
-      $(".metadata-display").text($(".metadata-display").text() + " (" + averageScrobblesPerTrack + ")");
+      $(".metadata-display").text($(".metadata-display").text() + " (Avg: " + averageScrobblesPerTrack + ")");
       
     	sortBackward();
     }
