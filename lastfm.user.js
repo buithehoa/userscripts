@@ -56,6 +56,8 @@ const ALBUMS = [
   "Tulip Drive",
 ];
 
+var chartListRows = $('.chartlist .chartlist-row').not('.chartlist__placeholder-row');
+
 var waitForEl = function(selector, callback, count) {
   var MAX_NUMBER_OF_RETRIES = 60;
   var TIMEOUT = 1000;
@@ -88,7 +90,7 @@ var hideByName = function(element, chartListName, names) {
 }
 
 var sortBackward = function() {
-  $('.chartlist .chartlist-row').not('.chartlist__placeholder-row').sort(function(a, b) {
+  chartListRows.sort(function(a, b) {
     return 1;
   }).appendTo('.chartlist');
 }
@@ -100,7 +102,9 @@ $(document).ready(function() {
 
 //     $('.col-main').prepend($('nav.pagination'));
     
-    $('.chartlist .chartlist-row').each(function(index, element) {
+    var scrobbleCount = 0;
+    
+    chartListRows.each(function(index, element) {
       var rankText = $(element).children('.chartlist-index').text();
       var rank = parseInt(rankText.replace(/,/g, ''));
       
@@ -113,9 +117,18 @@ $(document).ready(function() {
       } else if (href.includes("/library/artists?date_preset=ALL")) {
         hideByName(element, chartListName, ARTISTS);
       }
+      
+      var countBarValue = $(element).find('.chartlist-count-bar-value').contents().get(0).nodeValue;
+      scrobbleCount += parseInt(countBarValue);
     });
     
-    if (href.includes("/library/albums?date_preset=LAST_30_DAYS") || href.includes("/library/music/")) {
+    if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
+    	sortBackward();
+    } else if (href.includes("/library/music/")) {
+      
+      var averageScrobblesPerTrack = (scrobbleCount / chartListRows.length).toFixed(2);
+      $(".metadata-display").text($(".metadata-display").text() + " (" + averageScrobblesPerTrack + ")");
+      
     	sortBackward();
     }
     
