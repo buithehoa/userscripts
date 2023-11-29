@@ -47,6 +47,7 @@ const ALBUMS = [
   "Real Live Sound",
   "Seventeen",
   "SOS",
+  "Syksy (Live Helsinki '64)",
   "The Ballad of Darren (Deluxe)",
   "The Voyage",
   "Toys in the Attic",
