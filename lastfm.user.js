@@ -95,6 +95,16 @@ var sortBackward = function() {
   }).appendTo('.chartlist');
 }
 
+var updateAlbumHref = function(element) {
+  var a = $(element).find(".chartlist-image a");
+  var href = "/user/buithehoa/library" + a.attr("href");
+  
+  a.attr("href", href);
+  
+  console.log(a.attr('href'));
+  
+}
+
 $(document).ready(function() {
   var href = window.location.href;
   
@@ -118,6 +128,8 @@ $(document).ready(function() {
         hideByName(element, chartListName, ARTISTS);
       }
       
+      updateAlbumHref(element);
+      
       var countBarValue = $(element).find('.chartlist-count-bar-value').contents().get(0).nodeValue;
       scrobbleCount += parseInt(countBarValue);
     });
@@ -127,7 +139,7 @@ $(document).ready(function() {
     } else if (href.includes("/library/music/")) {
       
       var averageScrobblesPerTrack = (scrobbleCount / chartListRows.length).toFixed(2);
-      $(".metadata-display").text($(".metadata-display").text() + " (Avg: " + averageScrobblesPerTrack + ")");
+      $(".metadata-display").html($(".metadata-display").text() + " (Avg: <span style='color: #b90000'>" + averageScrobblesPerTrack + "</span>)");
       
     	sortBackward();
     }
