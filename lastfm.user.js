@@ -45,6 +45,7 @@ const ALBUMS = [
   "Only the Strong Survive",
   "Positions",
   "Real Live Sound",
+  "Reli XIV",
   "Seventeen",
   "SOS",
   "Syksy (Live Helsinki '64)",
