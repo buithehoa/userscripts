@@ -32,7 +32,6 @@ const ALBUMS = [
   "Cheap Queen (Deluxe)",
   "Chim Vao Lang Quen",
   "Chúng Ta Đều Muốn Một Thứ",
-  "CITIZENS",
   "Curtain Call (Live 1995)",
   "Hasta la Raíz (Edición Especial)",
   "Hozier (Special Edition)",
