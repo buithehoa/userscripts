@@ -33,6 +33,7 @@ const ALBUMS = [
   "Chim Vao Lang Quen",
   "Chúng Ta Đều Muốn Một Thứ",
   "Curtain Call (Live 1995)",
+  "Diamonds And Pearls (Super Deluxe Edition)",
   "Hasta la Raíz (Edición Especial)",
   "Hozier (Special Edition)",
   "I Disagree",
