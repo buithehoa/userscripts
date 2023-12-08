@@ -39,7 +39,7 @@ $(document).ready(function() {
   }
 
   // Trigger download
-  var downloadButtonSelector = 'a.dlButton.addDownloadedBook';
+  var downloadButtonSelector = 'a.addDownloadedBook';
   if ($(downloadButtonSelector).length) {
     console.log('hello');
     $(downloadButtonSelector)[0].click();
