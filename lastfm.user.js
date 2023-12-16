@@ -44,6 +44,7 @@ const ALBUMS = [
   "On Earth As It Is: The B-Side/Rarities Collection",
   "Only the Strong Survive",
   "Positions",
+  "Queen Radio: Volume 1",
   "Real Live Sound",
   "Reli XIV",
   "Seventeen",
