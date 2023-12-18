@@ -27,7 +27,7 @@ const ALBUMS = [
   "And Time Begins",
   "Bad Reputation",
   "Bigger Houses",
-  "Black and White Rainbows (Deluxe Edition)",
+  "Black and White Rainbows",
   "Brigade",
   "Cheap Queen (Deluxe)",
   "Chim Vao Lang Quen",
