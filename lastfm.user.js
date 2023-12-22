@@ -27,7 +27,6 @@ const ALBUMS = [
   "Bigger Houses",
   "BLACK and WHITE RAINBOWS (Remastered with Bonus Tracks)",
   "Brigade",
-  "Cheap Queen (Deluxe)",
   "Chúng Ta Đều Muốn Một Thứ",
   "Curtain Call (Live 1995)",
   "Diamonds And Pearls (Super Deluxe Edition)",
@@ -35,7 +34,6 @@ const ALBUMS = [
   "Hozier (Special Edition)",
   "I Disagree",
   "Licked Live In NYC",
-  "Live from the Artists Den",
   "Meds",
   "Miss Anthropocene (Rave Edition)",
   "On Earth As It Is: The B-Side/Rarities Collection",
@@ -44,7 +42,6 @@ const ALBUMS = [
   "Queen Radio: Volume 1",
   "Real Live Sound",
   "Reli XIV",
-  "Seventeen",
   "SOS",
   "Syksy (Live Helsinki '64)",
   "The Ballad of Darren (Deluxe)",
@@ -52,7 +49,6 @@ const ALBUMS = [
   "Toys in the Attic",
   "Train of Thought",
   "TRUSTFALL",
-  "Tulip Drive",
 ];
 
 var chartListRows = $('.chartlist .chartlist-row').not('.chartlist__placeholder-row');
