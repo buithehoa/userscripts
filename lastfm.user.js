@@ -24,6 +24,7 @@ const ARTISTS = [
 const ALBUMS = [
   "72 Seasons",
   "Alive at Twenty-Five - Ritual De Lo Habitual Live",
+  "ATUM",
   "Bigger Houses",
   "BLACK and WHITE RAINBOWS (Remastered with Bonus Tracks)",
   "Brigade",
