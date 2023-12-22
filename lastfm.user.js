@@ -25,7 +25,6 @@ const ALBUMS = [
   "72 Seasons",
   "Alive at Twenty-Five - Ritual De Lo Habitual Live",
   "And Time Begins",
-  "Bad Reputation",
   "Bigger Houses",
   "BLACK and WHITE RAINBOWS (Remastered with Bonus Tracks)",
   "Brigade",
