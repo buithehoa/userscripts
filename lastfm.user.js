@@ -28,7 +28,6 @@ const ALBUMS = [
   "BLACK and WHITE RAINBOWS (Remastered with Bonus Tracks)",
   "Brigade",
   "Cheap Queen (Deluxe)",
-  "Chim Vao Lang Quen",
   "Chúng Ta Đều Muốn Một Thứ",
   "Curtain Call (Live 1995)",
   "Diamonds And Pearls (Super Deluxe Edition)",
