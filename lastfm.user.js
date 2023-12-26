@@ -9,6 +9,8 @@
 // @match *://www.last.fm/user/buithehoa/library/music/*
 //
 // @require https://code.jquery.com/jquery-3.3.1.min.js
+// @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
+//
 // ==/UserScript==
 
 this.$ = this.jQuery = jQuery.noConflict(true);
@@ -24,7 +26,7 @@ const ARTISTS = [
 const ALBUMS = [
   "72 Seasons",
   "Alive at Twenty-Five - Ritual De Lo Habitual Live",
-  "ATUM",
+  "Atum",
   "Bigger Houses",
   "BLACK and WHITE RAINBOWS (Remastered with Bonus Tracks)",
   "Brigade",
@@ -52,26 +54,9 @@ const ALBUMS = [
   "TRUSTFALL",
 ];
 
-var chartListRows = $('.chartlist .chartlist-row').not('.chartlist__placeholder-row');
-
-var waitForEl = function(selector, callback, count) {
-  var MAX_NUMBER_OF_RETRIES = 60;
-  var TIMEOUT = 1000;
-
-  if (jQuery(selector).length) {
-    callback();
-  } else {
-    setTimeout(function() {
-      if (!count) {
-        count = 0;
-      }
-      count++;
-      if (count <= MAX_NUMBER_OF_RETRIES) {
-        waitForEl(selector, callback, count);
-      } else {return;}
-    }, TIMEOUT);
-  }
-};
+var getChartListRows = function() {
+	return $('.chartlist .chartlist-row').not('.chartlist__placeholder-row');
+}
 
 var hideByRank = function(element, rank, startRank, endRank) {
   if (rank < startRank || rank > endRank) {
@@ -86,7 +71,7 @@ var hideByName = function(element, chartListName, names) {
 }
 
 var sortBackward = function() {
-  chartListRows.sort(function(a, b) {
+  getChartListRows().sort(function(a, b) {
     return 1;
   }).appendTo('.chartlist');
 }
@@ -96,52 +81,48 @@ var updateAlbumHref = function(element) {
   var href = "/user/buithehoa/library" + a.attr("href");
   
   a.attr("href", href);
-  
-  console.log(a.attr('href'));
-  
 }
 
-$(document).ready(function() {
+
+// $(document).ready(function() {
+waitForKeyElements(".col-main", function() {
   var href = window.location.href;
   
-  waitForEl('.chartlist .chartlist-row', function() {
-
 //     $('.col-main').prepend($('nav.pagination'));
     
-    var scrobbleCount = 0;
-    
-    chartListRows.each(function(index, element) {
-      var rankText = $(element).children('.chartlist-index').text();
-      var rank = parseInt(rankText.replace(/,/g, ''));
-      
-      var chartListName = $(element).find(".chartlist-name a").text();
-      
-      if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
-        hideByName(element, chartListName, ALBUMS);
-      } else if (href.includes("/library/albums?date_preset=ALL")) {
-        hideByRank(element, rank, 1501, 1508);
-      } else if (href.includes("/library/artists?date_preset=ALL")) {
-        hideByName(element, chartListName, ARTISTS);
-      }
-      
-      updateAlbumHref(element);
-      
-      var countBarValue = $(element).find('.chartlist-count-bar-value').contents().get(0).nodeValue;
-      scrobbleCount += parseInt(countBarValue);
-    });
-    
+  var scrobbleCount = 0;
+
+  getChartListRows().each(function(index, element) {
+    var rankText = $(element).children('.chartlist-index').text();
+    var rank = parseInt(rankText.replace(/,/g, ''));
+
+    var chartListName = $(element).find(".chartlist-name a").text();
+
     if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
-    	sortBackward();
-    } else if (href.includes("/library/music/")) {
-      
-      var averageScrobblesPerTrack = (scrobbleCount / chartListRows.length).toFixed(2);
-      $(".metadata-display").html($(".metadata-display").text() + " (Avg: <span style='color: #b90000'>" + averageScrobblesPerTrack + "</span>)");
-      
-    	sortBackward();
+      hideByName(element, chartListName, ALBUMS);
+    } else if (href.includes("/library/albums?date_preset=ALL")) {
+      hideByRank(element, rank, 1501, 1508);
+    } else if (href.includes("/library/artists?date_preset=ALL")) {
+      hideByName(element, chartListName, ARTISTS);
     }
-    
-    if ($('.container.content-top-lower').length) {
-      $('.container.content-top-lower').get(0).scrollIntoView();
-    }
+
+    updateAlbumHref(element);
+
+    var countBarValue = $(element).find('.chartlist-count-bar-value').contents().get(0).nodeValue;
+    scrobbleCount += parseInt(countBarValue);
   });
+
+  if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
+    sortBackward();
+  } else if (href.includes("/library/music/")) {
+
+    var averageScrobblesPerTrack = (scrobbleCount / getChartListRows().length).toFixed(2);
+    $(".metadata-display").html($(".metadata-display").text() + " (Avg: <span style='color: #b90000'>" + averageScrobblesPerTrack + "</span>)");
+
+    sortBackward();
+  }
+
+  if ($('.container.content-top-lower').length) {
+    $('.container.content-top-lower').get(0).scrollIntoView();
+  }
 });
