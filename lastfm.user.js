@@ -32,10 +32,10 @@ const ALBUMS = [
   "Curtain Call (Live 1995)",
   "Diamonds And Pearls (Super Deluxe Edition)",
   "Hozier (Special Edition)",
+  "NGƯỜI LẠ TRONG MƠ",
   "On Earth As It Is: The B-Side/Rarities Collection",
   "Only the Strong Survive",
   "Positions",
-  "Real Live Sound",
   "SOS",
   "The Ballad of Darren (Deluxe)",
   "TRUSTFALL",
@@ -90,7 +90,7 @@ waitForKeyElements(".col-main", function() {
     if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
       hideByName(element, chartListName, ALBUMS);
     } else if (href.includes("/library/albums?date_preset=ALL")) {
-      hideByRank(element, rank, 1501, 1508);
+      hideByRank(element, rank, 1501, 1510);
     } else if (href.includes("/library/artists?date_preset=ALL")) {
       hideByName(element, chartListName, ARTISTS);
     }
