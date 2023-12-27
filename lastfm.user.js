@@ -4,7 +4,7 @@
 // @description Sort albums in descending order by play count.
 //
 // @match *://www.last.fm/user/buithehoa/library/albums?date_preset=LAST_30_DAYS&page=1*
-// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&item=1501*
+// @match *://www.last.fm/user/buithehoa/library/albums?date_preset=ALL&page=31*
 // @match *://www.last.fm/user/buithehoa/library/artists?date_preset=ALL&page=2*
 // @match *://www.last.fm/user/buithehoa/library/music/*
 //
@@ -29,28 +29,15 @@ const ALBUMS = [
   "Atum",
   "Bigger Houses",
   "BLACK and WHITE RAINBOWS (Remastered with Bonus Tracks)",
-  "Brigade",
-  "Chúng Ta Đều Muốn Một Thứ",
   "Curtain Call (Live 1995)",
   "Diamonds And Pearls (Super Deluxe Edition)",
-  "Hasta la Raíz (Edición Especial)",
   "Hozier (Special Edition)",
-  "I Disagree",
-  "Licked Live In NYC",
-  "Meds",
-  "Miss Anthropocene (Rave Edition)",
   "On Earth As It Is: The B-Side/Rarities Collection",
   "Only the Strong Survive",
   "Positions",
-  "Queen Radio: Volume 1",
   "Real Live Sound",
-  "Reli XIV",
   "SOS",
-  "Syksy (Live Helsinki '64)",
   "The Ballad of Darren (Deluxe)",
-  "The Voyage",
-  "Toys in the Attic",
-  "Train of Thought",
   "TRUSTFALL",
 ];
 
@@ -86,6 +73,8 @@ var updateAlbumHref = function(element) {
 
 // $(document).ready(function() {
 waitForKeyElements(".col-main", function() {
+  console.log("[DEBUG] .col-main");
+  
   var href = window.location.href;
   
 //     $('.col-main').prepend($('nav.pagination'));
