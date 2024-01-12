@@ -27,15 +27,17 @@ const ALBUMS = [
   "72 Seasons",
   "Alive at Twenty-Five - Ritual De Lo Habitual Live",
   "Atum",
+  "Bewitched",
   "Bigger Houses",
   "Curtain Call (Live 1995)",
-  "Diamonds And Pearls (Super Deluxe Edition)",
+  "Giao Lộ Thời Gian",
   "Hozier (Special Edition)",
   "On Earth As It Is: The B-Side/Rarities Collection",
   "Positions",
   "SOS",
   "The Ballad of Darren (Deluxe)",
   "TRUSTFALL",
+  "Welcome 2 America"
 ];
 
 var getChartListRows = function() {
