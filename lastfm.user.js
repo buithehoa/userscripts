@@ -16,8 +16,6 @@
 this.$ = this.jQuery = jQuery.noConflict(true);
 
 const ARTISTS = [
-  "Foo Fighters",
-  "Gipsy Kings",
   "Prince",
   "The Smashing Pumpkins",
   "YUI"
