@@ -30,6 +30,7 @@ const ALBUMS = [
   "Curtain Call (Live 1995)",
   "Giao Lộ Thời Gian",
   "Hozier (Special Edition)",
+  "MY SHORT STORIES",
   "On Earth As It Is: The B-Side/Rarities Collection",
   "Positions",
   "SOS",
