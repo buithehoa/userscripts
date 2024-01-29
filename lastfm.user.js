@@ -27,6 +27,7 @@ const ALBUMS = [
   "Atum",
   "Bewitched",
   "Bigger Houses",
+  "Cân Bằng",
   "Curtain Call (Live 1995)",
   "Hozier (Special Edition)",
   "MY SHORT STORIES",
