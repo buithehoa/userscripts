@@ -23,11 +23,9 @@ const ARTISTS = [
 
 const ALBUMS = [
   "72 Seasons",
-  "Alive at Twenty-Five - Ritual De Lo Habitual Live",
   "Atum",
   "Bewitched",
   "Con Duong Khong Ten",
-  "Curtain Call (Live 1995)",
   "Hozier (Special Edition)",
   "Mammoth II",
   "MY SHORT STORIES",
