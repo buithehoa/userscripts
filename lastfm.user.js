@@ -25,13 +25,15 @@ const ALBUMS = [
   "72 Seasons",
   "Atum",
   "Bewitched",
-  "Con Duong Khong Ten",
   "Hozier (Special Edition)",
   "Mammoth II",
   "MY SHORT STORIES",
   "Take Me Back to Eden",
   "The Ballad of Darren (Deluxe)",
-  "Welcome 2 America"
+  "The Great Divide",
+  "War, Peace, Love & Sorrow",
+  "Welcome 2 America",
+  "Yêu và Đi"
 ];
 
 var getChartListRows = function() {
@@ -83,7 +85,7 @@ waitForKeyElements(".col-main", function() {
     if (href.includes("/library/albums?date_preset=LAST_30_DAYS")) {
       hideByName(element, chartListName, ALBUMS);
     } else if (href.includes("/library/albums?date_preset=ALL")) {
-      hideByRank(element, rank, 1501, 1510);
+      hideByRank(element, rank, 1501, 1550);
     } else if (href.includes("/library/artists?date_preset=ALL")) {
       hideByName(element, chartListName, ARTISTS);
     }
