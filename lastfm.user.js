@@ -22,14 +22,12 @@ const ARTISTS = [
 ];
 
 const ALBUMS = [
-  "72 Seasons",
   "Atum",
   "Bewitched",
   "Hozier (Special Edition)",
   "Mammoth II",
   "MY SHORT STORIES",
   "Take Me Back to Eden",
-  "The Ballad of Darren (Deluxe)",
   "The Great Divide",
   "War, Peace, Love & Sorrow",
   "Welcome 2 America",
