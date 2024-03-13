@@ -24,12 +24,11 @@ const ARTISTS = [
 const ALBUMS = [
   "Atum",
   "Bewitched",
+  "Heavener",
   "Hozier (Special Edition)",
   "Mammoth II",
   "MY SHORT STORIES",
   "Take Me Back to Eden",
-  "The Great Divide",
-  "War, Peace, Love & Sorrow",
   "Welcome 2 America",
   "Yêu và Đi"
 ];
