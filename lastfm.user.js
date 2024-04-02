@@ -26,10 +26,10 @@ const ALBUMS = [
   "Bewitched",
   "Heavener",
   "Hozier (Special Edition)",
+  "Live At Glam Slam",
   "Mammoth II",
   "MY SHORT STORIES",
   "Take Me Back to Eden",
-  "Welcome 2 America",
   "Yêu và Đi"
 ];
 
