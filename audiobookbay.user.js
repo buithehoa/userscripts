@@ -9,6 +9,9 @@
 // @match *://audiobookbay.is/*
 // @match *://audiobookbay.is/page/*
 // @match *://audiobookbay.is/abs/*
+// @match *://audiobookbay.lu/*
+// @match *://audiobookbay.lu/page/*
+// @match *://audiobookbay.lu/abss/*
 // @match *://audiobookbay.net/*
 // @match *://audiobookbay.net/page/*
 // @match *://audiobookbay.net/abs/*
