@@ -3,20 +3,12 @@
 // @version 1.0
 // @description Open search results in new tab and automatically trigger the download.
 //
-// @match *://asia1lib.vip/s/*
-// @match *://asia1lib.vip/book/*
-// @match *://b-ok.asia/s/*
-// @match *://b-ok.asia/book/*
-// @match *://book4you.org/s/*
-// @match *://book4you.org/book/*
-// @match *://vn1lib.org/s/*
-// @match *://vn1lib.org/book/*
-// @match *://lib-36emhbccn7yu3iqvjqsmawx2.must.wf/s/*
-// @match *://lib-36emhbccn7yu3iqvjqsmawx2.must.wf/book/*
 // @match *://1lib.sk/s/*
 // @match *://1lib.sk/book/*
-// @match *://en.zlibrary-vn.se/s/*
-// @match *://en.zlibrary-vn.se/book/*
+// @match *://singlelogin.re/s/*
+// @match *://singlelogin.re/book/*
+// @match *://z-library.rs/s/*
+// @match *://z-library.rs/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
 // ==/UserScript==
