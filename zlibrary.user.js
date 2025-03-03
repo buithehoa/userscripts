@@ -7,26 +7,52 @@
 // @match *://1lib.sk/book/*
 // @match *://singlelogin.re/s/*
 // @match *://singlelogin.re/book/*
-// @match *://z-library.rs/s/*
-// @match *://z-library.rs/book/*
-//
-// @require https://code.jquery.com/jquery-3.5.1.min.js
-// @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
+// @match *://z-library.sk/s/*
+// @match *://z-library.sk/book/*
 //
 // ==/UserScript==
 
-$(document).ready(function() {
+function addBlankTargetToTitles(shadowHosts) {
+  shadowHosts.forEach((shadowHost) => {
+  	let title = shadowHost.shadowRoot.querySelector(".tile .book-info a.title");
+    title.setAttribute('target', '_blank');
+  })
+}
+
+function waitForShadowRoot(selector, callback) {
+  const observer = new MutationObserver((mutations, obs) => {
+    let shadowHost = document.querySelector(selector);
+
+    if (shadowHost && shadowHost.shadowRoot) {
+      obs.disconnect(); // Stop observing once found
+      callback(shadowHost.shadowRoot);
+    }
+  });
+
+  observer.observe(document.body, { // Observe changes to the body
+    childList: true,
+    subtree: true,
+  });
+}
+
+// Example usage:
+waitForShadowRoot(".book-item z-bookcard", () => {
+  let shadowHosts = document.querySelectorAll(".book-item z-bookcard");
+  
+	addBlankTargetToTitles(shadowHosts);
+});
+
+(function() {
+  'use strict';
+  
+  
+  
   // Scroll search results into view
-  if ($('#searchForm').length) {
-    $('#searchForm').get(0).scrollIntoView();
-  }
+//   if ($('#searchForm').length) {
+//     $('#searchForm').get(0).scrollIntoView();
+//   }
 
   // Open search result in new tab
-  var titleSelector = 'td h3 a[data-target-desktop=new-tab]';
-  if ($(titleSelector).length) {
-    console.log("oh?");
-    $(titleSelector).attr('target', '_blank');
-  }
 
 //   var coverSelector = '.bookRow .itemCoverWrapper';
 //   if ($(coverSelector).length) {
@@ -38,4 +64,4 @@ $(document).ready(function() {
 //   if ($(downloadButtonSelector).length) {
 //     $(downloadButtonSelector)[0].click();
 //   }
-});
+})();
