@@ -48,11 +48,31 @@ function waitForShadowRoot(selector, callback) {
 
 waitForShadowRoot(".book-item z-bookcard", () => {
   let searchForm = document.getElementById('searchForm');
-  searchForm.scrollIntoView();
+  searchForm?.scrollIntoView();
   
   let shadowHosts = document.querySelectorAll(".book-item z-bookcard");
   addBlankTargetToCovers(shadowHosts);
   
   shadowHosts = document.querySelectorAll(".book-item z-bookcard");  
 	addBlankTargetToTitles(shadowHosts);
+});
+
+function waitForElement(selector, callback) {
+  const observer = new MutationObserver((mutations, obs) => {
+    let element = document.querySelector(selector);
+
+    if (element) {
+      obs.disconnect(); // Stop observing once found
+      callback(element);
+    }
+  });
+
+  observer.observe(document.body, { // Observe changes to the body
+    childList: true,
+    subtree: true,
+  });
+}
+
+waitForElement('.book-actions-container a.addDownloadedBook', (element) => {
+	element.click();
 });
