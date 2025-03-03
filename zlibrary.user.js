@@ -11,6 +11,8 @@
 // @match *://z-library.rs/book/*
 //
 // @require https://code.jquery.com/jquery-3.5.1.min.js
+// @require  https://gist.github.com/raw/2625891/waitForKeyElements.js
+//
 // ==/UserScript==
 
 $(document).ready(function() {
@@ -20,20 +22,20 @@ $(document).ready(function() {
   }
 
   // Open search result in new tab
-  var titleSelector = 'td h3[itemprop=name] a';
+  var titleSelector = 'td h3 a[data-target-desktop=new-tab]';
   if ($(titleSelector).length) {
+    console.log("oh?");
     $(titleSelector).attr('target', '_blank');
   }
 
-  var coverSelector = '.checkBookDownloaded.itemCoverWrapper a';
-  if ($(coverSelector).length) {
-    $(coverSelector).attr('target', '_blank');
-  }
+//   var coverSelector = '.bookRow .itemCoverWrapper';
+//   if ($(coverSelector).length) {
+//     $(coverSelector).attr('target', '_blank');
+//   }
 
   // Trigger download
-  var downloadButtonSelector = 'a.addDownloadedBook';
-  if ($(downloadButtonSelector).length) {
-    console.log('hello');
-    $(downloadButtonSelector)[0].click();
-  }
+//   var downloadButtonSelector = 'a.addDownloadedBook';
+//   if ($(downloadButtonSelector).length) {
+//     $(downloadButtonSelector)[0].click();
+//   }
 });
