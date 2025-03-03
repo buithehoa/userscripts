@@ -12,6 +12,17 @@
 //
 // ==/UserScript==
 
+'use strict';
+
+function addBlankTargetToCovers(shadowHosts) {
+  shadowHosts.forEach((shadowHost) => {
+    shadowHost = shadowHost.shadowRoot.querySelector('.tile .cover a z-cover');
+    
+  	let cover = shadowHost.shadowRoot.querySelector(".volume a");
+    cover.setAttribute('target', '_blank');
+  })
+}
+
 function addBlankTargetToTitles(shadowHosts) {
   shadowHosts.forEach((shadowHost) => {
   	let title = shadowHost.shadowRoot.querySelector(".tile .book-info a.title");
@@ -35,33 +46,13 @@ function waitForShadowRoot(selector, callback) {
   });
 }
 
-// Example usage:
 waitForShadowRoot(".book-item z-bookcard", () => {
-  let shadowHosts = document.querySelectorAll(".book-item z-bookcard");
+  let searchForm = document.getElementById('searchForm');
+  searchForm.scrollIntoView();
   
+  let shadowHosts = document.querySelectorAll(".book-item z-bookcard");
+  addBlankTargetToCovers(shadowHosts);
+  
+  shadowHosts = document.querySelectorAll(".book-item z-bookcard");  
 	addBlankTargetToTitles(shadowHosts);
 });
-
-(function() {
-  'use strict';
-  
-  
-  
-  // Scroll search results into view
-//   if ($('#searchForm').length) {
-//     $('#searchForm').get(0).scrollIntoView();
-//   }
-
-  // Open search result in new tab
-
-//   var coverSelector = '.bookRow .itemCoverWrapper';
-//   if ($(coverSelector).length) {
-//     $(coverSelector).attr('target', '_blank');
-//   }
-
-  // Trigger download
-//   var downloadButtonSelector = 'a.addDownloadedBook';
-//   if ($(downloadButtonSelector).length) {
-//     $(downloadButtonSelector)[0].click();
-//   }
-})();
